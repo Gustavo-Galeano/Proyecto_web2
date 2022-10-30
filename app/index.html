@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <div data-role="page" id="pageone">
+        <button class="ui-btn ui-icon-arrow-l ui-btn-icon-left" id="botonBack"
+            onclick="location.href='index.html'">Acceso a la App</button>
+        <div data-role="header" id="titulo">
+            <h1>Acceso a la App</h1>
+        </div>
+
+        <div data-role="main" class="ui-content" id="acceso">
+            <form method="get" action="#">
+
+                <div class="ui-field-contain">
+                    <label for="name">User:</label>
+                    <input type="text" class="ui-icon-search ui-btn-icon-left" name="usuario" id="usuario" value=""
+                        placeholder="Ingrtesa tu usuario" required>
+                    <span style="color:red" class="ui-icon-alert ui-btn-icon-right"></span>
+                    <div id="mensaje1"></div>
+                </div>
+
+                <div class="ui-field-contain">
+                    <label for="search">Pass:</label>
+                    <input type="password" name="pass" id="pass" value="" placeholder="Ingresa tu contraseña" required>
+                    <span style="color:red" class="ui-icon-alert ui-btn-icon-right"></span>
+                    <div id="mensaje2"></div>
+                </div>
+
+
+                <div data-role="main" class="ui-content">
+                    <a href="#" class="ui-btn" id="boton">Acceder</a>
+                    <a href="#" class="ui-btn" id="registro">Registrarse</a>
+                </div>
+
+            </form>
+        </div>
+
+        <div data-role="main" class="ui-content" id="registrar">
+            <form method="get" action="#">
+
+                <div class="ui-field-contain">
+                    <label for="name">Nombre:</label>
+                    <input type="text" class="ui-icon-search ui-btn-icon-left" name="nombre_r" id="nombre_r" value=""
+                        placeholder="Ingrtesa tu usuario" required>
+                    <span style="color:red" class="ui-icon-alert ui-btn-icon-right"></span>
+                    <div id="mensaje3"></div>
+                </div>
+                <div class="ui-field-contain">
+                    <label for="name">Apellido:</label>
+                    <input type="text" class="ui-icon-search ui-btn-icon-left" name="apellido_r" id="apellido_r"
+                        value="" placeholder="Ingrtesa tu usuario" required>
+                    <span style="color:red" class="ui-icon-alert ui-btn-icon-right"></span>
+                    <div id="mensaje4"></div>
+                </div>
+                <div class="ui-field-contain">
+                    <label for="name">Usuario:</label>
+                    <input type="text" class="ui-icon-search ui-btn-icon-left" name="usuario_r" id="usuario_r" value=""
+                        placeholder="Ingrtesa tu usuario" required>
+                    <span style="color:red" class="ui-icon-alert ui-btn-icon-right"></span>
+                    <div id="mensaje5"></div>
+                </div>
+                <div class="ui-field-contain">
+                    <label for="search">Pass:</label>
+                    <input type="password" name="pass_r" id="pass_r" value="" placeholder="Ingresa tu contraseña"
+                        required>
+                    <span style="color:red" class="ui-icon-alert ui-btn-icon-right"></span>
+                    <div id="mensaje6"></div>
+                </div>
+
+
+                <div data-role="main" class="ui-content">
+                    <a href="#" class="ui-btn" id="boton_r">Registrarse</a>
+
+                </div>
+
+            </form>
+        </div>
+
+
+
+        <div data-role="footer">
+            <h3 id="mensaje"></h3>
+        </div>
+    </div>
+</body>
+
+<script>
+
+    $(document).ready(function () {
+
+        // alert(localStorage.usuario);
+        $("#registrar").hide();
+        $("span").hide();
+        $("#botonBack").hide();
+        $("#boton").click(function () {
+            $("#mensaje").html("<i style='color:green'>Validando los datos<i>");
+            var caja1 = $("#usuario").val();
+            var caja2 = $("#pass").val();
+            if (caja1 == "") {
+                $("span").show();
+                $("#mensaje1").html("<i style='color:red'>Campo requerido<i>");
+                $("#mensaje1").fadeOut(3000, function () {
+                    $("#mensaje1").html("");
+                });
+                $("#usuario").focus();
+                $("#mensaje1").fadeIn();
+                return false;
+            }
+            if (caja2 == "") {
+                $("#mensaje2").html("<i style='color:red'>Campo requerido<i>");
+                $("#mensaje2").fadeOut(3000, function () {
+                    $("#mensaje2").html("");
+                });
+                $("#pass").focus();
+                $("#mensaje2").fadeIn();
+                return false;
+            }
+            /*aqui llamaremos a un ajax para validar los datos del usuario*/
+
+            $.get("php/validar.php", {
+                caja1: caja1, caja2: caja2
+            }, function (data) {
+                $("#mensaje").html(data);
+                const myArray = JSON.parse(data);
+                if (myArray[1] != 1) {
+                    $("#mensaje").html(myArray[0]);
+                    $("#mensaje").fadeOut(5000, function () {
+                        $("#mensaje").html("");
+
+                    });
+                    $("#mensaje").fadeIn();
+                } else {
+                    $("#mensaje").html(myArray[0]);
+                    $("#mensaje").fadeOut(5000, function () {
+                        $("#mensaje").html("");
+                        location.href = 'menu.html';
+                    });
+
+                    $("#mensaje").fadeIn();
+                }
+
+            })
+
+            /*******************************/
+        });
+
+
+
+        $("#boton_r").click(function () {
+            $("#mensaje").html("<i style='color:green'>Validando los datos<i>");
+            var caja1 = $("#nombre_r").val();
+            var caja2 = $("#apellido_r").val();
+            var caja3 = $("#usuario_r").val();
+            var caja4 = $("#pass_r").val();
+            if (caja1 == "") {
+                $("span").show();
+                $("#mensaje3").html("<i style='color:red'>Campo requerido<i>");
+                $("#mensaje3").fadeOut(3000, function () {
+                    $("#mensaje3").html("");
+                });
+                $("#nombre_r").focus();
+                $("#mensaje3").fadeIn();
+                return false;
+            }
+
+            if (caja2 == "") {
+                $("#mensaje4").html("<i style='color:red'>Campo requerido<i>");
+                $("#mensaje4").fadeOut(3000, function () {
+                    $("#mensaje4").html("");
+                });
+                $("#apellido_r").focus();
+                $("#mensaje4").fadeIn();
+                return false;
+            }
+
+
+            if (caja3 == "") {
+                $("#mensaje5").html("<i style='color:red'>Campo requerido<i>");
+                $("#mensaje5").fadeOut(3000, function () {
+                    $("#mensaje5").html("");
+                });
+                $("#usuario_r").focus();
+                $("#mensaje5").fadeIn();
+                return false;
+            }
+
+            if (caja4 == "") {
+                $("#mensaje6").html("<i style='color:red'>Campo requerido<i>");
+                $("#mensaje6").fadeOut(3000, function () {
+                    $("#mensaje6").html("");
+                });
+                $("#pass_r").focus();
+                $("#mensaje6").fadeIn();
+                return false;
+            }
+
+
+            /*aqui llamaremos a un ajax para guardar los datos del usuario*/
+            $.get("php/registro.php", { nombre: caja1, apellido: caja2, usuario: caja3, pass: caja4 }, function (respuesta) {
+                $("#mensaje").html(respuesta);
+                $("#mensaje").fadeOut(3000, function () {
+                    $("#mensaje").html("");
+                    $("#acceso").show();
+                    $("#registrar").hide();
+                });
+            });
+            /*******************************/
+        });
+
+
+        $("#registro").click(function () {
+            $("#registrar").show();
+            $("#acceso").hide();
+            $("#botonBack").show();
+            $("#titulo").hide();
+        })
+
+    });
+
+</script>
+<script>
+    $.get("php/sesion.php", {}, function (retorna) {
+        if (retorna == 1) {
+            location.href = 'menu.html'
+
+        }
+    })
+</script>
+
+</html>
