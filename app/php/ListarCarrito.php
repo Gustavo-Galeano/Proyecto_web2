@@ -43,8 +43,9 @@ $sql = mysqli_query($db, "select * from carrito where estado='Pendiente' and idc
                     <td><?php echo $row['cantidad'] ?></td>
                     <td><?php echo $row['precio'] ?></td>
                     <td>
-                        <button type="submit" class="btn btn-danger" onclick="eliminar(<?php echo $row['idproducto']; ?>)">
-                            Eliminar
+                        <button type="button" class="btn btn-danger" 
+                        onclick="anular(<?php echo $row['id']; ?>)">
+                            Anular
                         </button>
                     </td>
                 </tr>
@@ -56,24 +57,24 @@ $sql = mysqli_query($db, "select * from carrito where estado='Pendiente' and idc
         <!--Table body-->
 
     </table>
-    <button type="submit" class="btn btn-danger">
+    <button type="button" class="btn btn-danger">
         Canelar
     </button>
-    <button type="submit" class="btn btn-success">
+    <button type="button" class="btn btn-success">
         Confirmar
     </button>
 
 
     <script>
-        function eliminar(a) {
+        function anular(a) {
             swal({
                     title: "Seguro?",
-                    text: "Eliminara por completo el registro!",
+                    text: "El registro de anulara por completo!",
                     type: "warning",
                     showCancelButton: true,
                     confirmButtonClass: "btn-danger",
-                    confirmButtonText: "Si, Eliminar esto!",
-                    cancelButtonText: "No, Cancelar PorFa!",
+                    confirmButtonText: "Si, Anular esto!",
+                    cancelButtonText: "No, Cancelar!",
                     closeOnConfirm: false,
                     closeOnCancel: false
                 },
@@ -85,12 +86,12 @@ $sql = mysqli_query($db, "select * from carrito where estado='Pendiente' and idc
                             id: a
                         }, function(valores) {
                             if (valores == 1) {
-                                swal("Borrado!", "El registro se ha borrado correctamente.", "success");
-                                setTimeout(location.href = '?', 5000);
+                                swal("Anulado!", "Registro Anulado.", "success");
+                                setTimeout(location.href = '?', 3000);
                             }
                         })
                     } else {
-                        swal("Cancelado", "La accion fue cancelada :)", "error");
+                        swal("Cancelado", "Accion cancelada", "error");
                     }
                 });
         }

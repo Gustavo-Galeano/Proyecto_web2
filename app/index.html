@@ -41,11 +41,8 @@
 
 
                 <div data-role="main" class="ui-content">
-                    <button type="submit" class="btn btn-primary" id="boton">Acceder</button>
-                    <button type="submit" class="btn btn-secondary" id="registro">Registrarse</button>
-
-                    <!-- <a href="#"  class="btn btn-primary" id="boton">Acceder</a>
-                    <a href="#" class="btn btn-secondary" id="registro">Registrarse</a> -->
+                    <button type="button" class="btn btn-primary" id="boton">Acceder</button>
+                    <button type="button" class="btn btn-secondary" id="registro">Registrarse</button>
                 </div> 
 
             </form>
@@ -85,7 +82,7 @@
 
 
                 <div data-role="main" class="ui-content">
-                    <button type="submit" class="btn btn-secondary" id="boton_r">Registrarse</button>
+                    <button type="button" class="btn btn-secondary" id="boton_r">Registrarse</button>
                 </div>
 
             </form>
@@ -103,6 +100,7 @@
         $("span").hide();
         $("#botonBack").hide();
         $("#boton").click(function () {
+            // alert("wee")
             $("#mensaje").html("<i style='color:green'>Validando los datos<i>");
             var caja1 = $("#usuario").val();
             var caja2 = $("#pass").val();
@@ -125,12 +123,12 @@
                 $("#mensaje2").fadeIn();
                 return false;
             }
-            /*aqui llamaremos a un ajax para validar los datos del usuario*/
             $.get("php/validar.php", {
                 caja1: caja1, caja2: caja2
             }, function (data) {
                 $("#mensaje").html(data);
                 const myArray = JSON.parse(data);
+                $("#registrar").hide();
                 if (myArray[1] != 1) {
                     $("#mensaje").html(myArray[0]);
                     $("#mensaje").fadeOut(5000, function () {
@@ -140,6 +138,7 @@
                 } else {
                     $("#mensaje").html(myArray[0]);
                     $("#mensaje").fadeOut(5000, function () {
+                        
                         $("#mensaje").html("");
                         location.href = 'menu.html';
                     });
@@ -207,7 +206,6 @@
             $("#botonBack").show();
             $("#titulo").hide();
         })
-
     });
 
 </script>
@@ -215,7 +213,6 @@
     $.get("php/sesion.php", {}, function (retorna) {
         if (retorna == 1) {
             location.href = 'menu.html'
-
         }
     })
 </script>

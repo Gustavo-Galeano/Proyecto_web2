@@ -8,7 +8,7 @@ $row = mysqli_num_rows($datos);
 
 if ($row > 0) {
     $arrayUser = mysqli_fetch_array($datos);
-    $var[] = "<div class='alert alert-success' role='alert'>[200 OK] Redireccionando</div>";
+    $var[] = "<div class='alert alert-success' role='alert'> Redireccionando</div>";
     $var[] = 1;
     echo $myJSON = json_encode($var);
 
@@ -20,7 +20,7 @@ if ($row > 0) {
     $_SESSION['usuario'] = $arrayUser['usuario'];
     
 } else {
-    $var[] = "<div class='alert alert-danger' role='alert'>[400 ERROR] Fallo inesperado</div>";
+    $var[] = "<div class='alert alert-danger' role='alert'> Fallo inesperado</div>";
     $var[] = 0;
     echo    $myJSON = json_encode($var);
 }

@@ -30,6 +30,7 @@ session_start();
                     <h4 class="card-title"><?php echo $row['descripcion'] ?></h4>
                     <p class="card-text"><?php echo $row['resena'] ?></p>
                     <p class="card-text text-center" style="font-size: 25px;"><?php echo number_format($row['precio'], 0, ',', '.') ?></p>
+               
                     <input type="hidden" id="codart<?php echo $row['id'] ?>" value="<?php echo $row['id'] ?>">
                     <input type="hidden" id="precioart<?php echo $row['id'] ?>" value="<?php echo $row['precio'] ?>">
                     <input type="number" value="1" id="cantidad<?php echo $row['id'] ?>" class="form-control text-center">
@@ -53,28 +54,62 @@ session_start();
     });
 
     function cargarcarrito(a) {
-
+        e = "INSERCION";
+        // e = $("#tipo" + a).val();
         c = $("#precioart" + a).val();
         b = $("#cantidad" + a).val();
         d = $("#usuarioCliente").val();
         /*alert(a);
         alert(c);
         alert(b);*/
-        /* a es el codigo del art, b es la cantidad, c es el precio y d es el codigo del cliente*/
+        /*
+        e es el tipo de consulta
+        a es el codigo del art, 
+        b es la cantidad, 
+        c es el precio 
+        d es el codigo del cliente
+        */
+        
         $.get("php/carrito.php", {
+            tipo: e,
             codart: a,
             cant: b,
             precio: c,
-            usu: d
+            usu: d,
         }, function(retorno) {
+            // console.log(retorno);
             if (retorno == 1) {
                 alert('Agregado al carrito');
-            } 
-            else {
+            } else {
                 alert('Problemas');
             }
-        })
+        });
     }
+
+
+    // function cargarcarrito(a) {
+
+    //     c = $("#precioart" + a).val();
+    //     b = $("#cantidad" + a).val();
+    //     d = $("#usuarioCliente").val();
+    //     /*alert(a);
+    //     alert(c);
+    //     alert(b);*/
+    //     /* a es el codigo del art, b es la cantidad, c es el precio y d es el codigo del cliente*/
+    //     $.get("php/carrito.php", {
+    //         codart: a,
+    //         cant: b,
+    //         precio: c,
+    //         usu: d,
+
+    //     }, function(retorno) {
+    //         if (retorno == 1) {
+    //             alert('Agregado al carrito');
+    //         } else {
+    //             alert('Problemas');
+    //         }
+    //     })
+    // }
 </script>
 
 </html>

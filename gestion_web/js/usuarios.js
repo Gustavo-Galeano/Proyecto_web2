@@ -49,7 +49,9 @@ $(document).ready(function () {
             return false;
         }
         //envio de datos mediante ajax
-        $.get("ajax/usuarios.php", { tipo: t, id: c, nombre: n, apellido: a, usuario: u, password: p }, function (retorno) {
+        $.get("ajax/usuarios.php", {
+             tipo: t, id: c, nombre: n, apellido: a, usuario: u, password: p 
+            }, function (retorno) {
             console.log(retorno);
             var x = JSON.parse(retorno);
             if (x[1] != 1) {
