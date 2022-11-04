@@ -14,35 +14,45 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
         integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
 
 </head>
 
 <body>
+    <style>
+        .icon{
+            width: 20px;
+        }
+    </style>
 
     <div data-role="header">
         <div data-role="navbar">
             <ul>
                 <li>
                     <a href="#" id="articulo">
-                        <i class="fa fa-home"></i>
+                        <!-- <i class="fa fa-home"></i> -->
+                        <i class='bx bx-home-smile'></i>
                     </a>
                 </li>
                 <li>
                     <a href="#" id="carrito">
-                        <span class="badge badge-success badge-counter" id="Qcart"></span>
-                        <i class="fa fa-shopping-cart"></i>
+                        <span class="badge badge-success badge-counter icon" id="Qcart"></span>
+                        <!-- <i class="fa fa-shopping-cart"></i> -->
+                        <i class='bx bxs-cart-alt ' ></i>
                     </a>
                     
                 </li>
                 <li>
                     <a href="#" id="historial">
-                        <i class="fa fa-history" aria-hidden="true"></i>
+                        <!-- <i class="fa fa-history" aria-hidden="true"></i> -->
+                        <i class='bx bx-history icon'></i>
                     </a>
                 </li>
                 <li>
-                    <a href="#" id="salir"><i class="fa fa-window-close" aria-hidden="true"></i>
+                    <a href="#" id="salir">
+                        <i class='bx bx-exit icon'></i>
+                        <!-- <i class="fa fa-window-close" aria-hidden="true"></i> -->
                     </a>
                 </li>
             </ul>
@@ -52,6 +62,8 @@
     <div id="mostrar"></div>
 </body>
 <!--script src="js/sesiones.js"></!--script-->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
 <script>
     $(document).ready(function () {
 

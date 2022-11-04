@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    /* INSERCION DE DATOS */
     $("#add").click(function () {
         $("#tipo").val("INSERCION");
     });
@@ -22,13 +21,6 @@ $(document).ready(function () {
 
 
     });
-    /* FIN INSERCION DE DATOS */
-
-    /* ACTUALIZACION DE DATOS */
-
-
-
-    /* FIN ACTUALIZACION DE DATOS */
 })
 
 function relleno(a, b, c, d, e) {

@@ -25,7 +25,7 @@
             <form method="get" action="#">
 
                 <div class="ui-field-contain">
-                    <label for="name">User:</label>
+                    <label for="name">Usuario</label>
                     <input type="text" class="ui-icon-search ui-btn-icon-left" name="usuario" id="usuario" value=""
                         placeholder="Ingrtesa tu usuario" required>
                     <span style="color:red" class="ui-icon-alert ui-btn-icon-right"></span>
@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="ui-field-contain">
-                    <label for="search">Pass:</label>
+                    <label for="search">Contraseña</label>
                     <input type="password" name="pass" id="pass" value="" placeholder="Ingresa tu contraseña" required>
                     <span style="color:red" class="ui-icon-alert ui-btn-icon-right"></span>
                     <div id="mensaje2"></div>
@@ -41,9 +41,12 @@
 
 
                 <div data-role="main" class="ui-content">
-                    <a href="#" class="ui-btn" id="boton">Acceder</a>
-                    <a href="#" class="ui-btn" id="registro">Registrarse</a>
-                </div>
+                    <button type="submit" class="btn btn-primary" id="boton">Acceder</button>
+                    <button type="submit" class="btn btn-secondary" id="registro">Registrarse</button>
+
+                    <!-- <a href="#"  class="btn btn-primary" id="boton">Acceder</a>
+                    <a href="#" class="btn btn-secondary" id="registro">Registrarse</a> -->
+                </div> 
 
             </form>
         </div>
@@ -52,28 +55,28 @@
             <form method="get" action="#">
 
                 <div class="ui-field-contain">
-                    <label for="name">Nombre:</label>
+                    <label for="name">Nombre</label>
                     <input type="text" class="ui-icon-search ui-btn-icon-left" name="nombre_r" id="nombre_r" value=""
                         placeholder="Ingrtesa tu usuario" required>
                     <span style="color:red" class="ui-icon-alert ui-btn-icon-right"></span>
                     <div id="mensaje3"></div>
                 </div>
                 <div class="ui-field-contain">
-                    <label for="name">Apellido:</label>
+                    <label for="name">Apellido</label>
                     <input type="text" class="ui-icon-search ui-btn-icon-left" name="apellido_r" id="apellido_r"
                         value="" placeholder="Ingrtesa tu usuario" required>
                     <span style="color:red" class="ui-icon-alert ui-btn-icon-right"></span>
                     <div id="mensaje4"></div>
                 </div>
                 <div class="ui-field-contain">
-                    <label for="name">Usuario:</label>
+                    <label for="name">Usuario</label>
                     <input type="text" class="ui-icon-search ui-btn-icon-left" name="usuario_r" id="usuario_r" value=""
                         placeholder="Ingrtesa tu usuario" required>
                     <span style="color:red" class="ui-icon-alert ui-btn-icon-right"></span>
                     <div id="mensaje5"></div>
                 </div>
                 <div class="ui-field-contain">
-                    <label for="search">Pass:</label>
+                    <label for="search">contraseña</label>
                     <input type="password" name="pass_r" id="pass_r" value="" placeholder="Ingresa tu contraseña"
                         required>
                     <span style="color:red" class="ui-icon-alert ui-btn-icon-right"></span>
@@ -82,15 +85,11 @@
 
 
                 <div data-role="main" class="ui-content">
-                    <a href="#" class="ui-btn" id="boton_r">Registrarse</a>
-
+                    <button type="submit" class="btn btn-secondary" id="boton_r">Registrarse</button>
                 </div>
 
             </form>
         </div>
-
-
-
         <div data-role="footer">
             <h3 id="mensaje"></h3>
         </div>
@@ -100,8 +99,6 @@
 <script>
 
     $(document).ready(function () {
-
-        // alert(localStorage.usuario);
         $("#registrar").hide();
         $("span").hide();
         $("#botonBack").hide();
@@ -129,7 +126,6 @@
                 return false;
             }
             /*aqui llamaremos a un ajax para validar los datos del usuario*/
-
             $.get("php/validar.php", {
                 caja1: caja1, caja2: caja2
             }, function (data) {
@@ -139,7 +135,6 @@
                     $("#mensaje").html(myArray[0]);
                     $("#mensaje").fadeOut(5000, function () {
                         $("#mensaje").html("");
-
                     });
                     $("#mensaje").fadeIn();
                 } else {
@@ -148,17 +143,10 @@
                         $("#mensaje").html("");
                         location.href = 'menu.html';
                     });
-
                     $("#mensaje").fadeIn();
                 }
-
             })
-
-            /*******************************/
         });
-
-
-
         $("#boton_r").click(function () {
             $("#mensaje").html("<i style='color:green'>Validando los datos<i>");
             var caja1 = $("#nombre_r").val();
@@ -175,7 +163,6 @@
                 $("#mensaje3").fadeIn();
                 return false;
             }
-
             if (caja2 == "") {
                 $("#mensaje4").html("<i style='color:red'>Campo requerido<i>");
                 $("#mensaje4").fadeOut(3000, function () {
@@ -185,8 +172,6 @@
                 $("#mensaje4").fadeIn();
                 return false;
             }
-
-
             if (caja3 == "") {
                 $("#mensaje5").html("<i style='color:red'>Campo requerido<i>");
                 $("#mensaje5").fadeOut(3000, function () {
@@ -196,7 +181,6 @@
                 $("#mensaje5").fadeIn();
                 return false;
             }
-
             if (caja4 == "") {
                 $("#mensaje6").html("<i style='color:red'>Campo requerido<i>");
                 $("#mensaje6").fadeOut(3000, function () {
@@ -206,9 +190,6 @@
                 $("#mensaje6").fadeIn();
                 return false;
             }
-
-
-            /*aqui llamaremos a un ajax para guardar los datos del usuario*/
             $.get("php/registro.php", { nombre: caja1, apellido: caja2, usuario: caja3, pass: caja4 }, function (respuesta) {
                 $("#mensaje").html(respuesta);
                 $("#mensaje").fadeOut(3000, function () {
@@ -217,7 +198,6 @@
                     $("#registrar").hide();
                 });
             });
-            /*******************************/
         });
 
 

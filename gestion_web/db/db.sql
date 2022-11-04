@@ -47,42 +47,47 @@ create table
     );
 
 insert into
-    datos (
-        nombre,
-        apellido,
-        usuario,
-        pass
-    )
-values (
-        'gustavo',
-        'galeano',
-        'w',
-        '1'
-    );
+    datos (nombre, apellido, usuario, pass)
+values ('gustavo', 'galeano', 'w', '1');
 
 select * from datos;
 
-create table carrito(
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    idcliente INT,
-    idproducto INT,
-    cantidad INT, 
-    precio INT, 
-    fecha DATE, 
-    estado TEXT,
-    idusuario INT
-);
+create table
+    carrito(
+        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        idcliente INT,
+        idproducto INT,
+        cantidad INT,
+        precio INT,
+        fecha DATE,
+        estado TEXT,
+        idusuario INT
+    );
 
-create table productos(
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    idcat INT,
-    descripcion VARCHAR(50),
-    precio INT,
-    img VARCHAR(50),
-    resena VARCHAR(30)
-);
+create table
+    productos(
+        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        idcat INT,
+        descripcion VARCHAR(50),
+        precio INT,
+        img VARCHAR(50),
+        resena VARCHAR(30)
+    );
 
 select * from carrito;
 
+insert into
+    usuarios(
+        nombre,
+        apellido,
+        usuario,
+        password
+    )
+values (
+        'laura',
+        'leguizamon',
+        'cajera',
+        '1234'
+    );
 
-
+select * from usuarios;

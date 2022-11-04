@@ -4,7 +4,7 @@ if ($_POST['tipo'] == "INSERCION") {
     if (empty($_FILES['imagen']['name'])) {
         $dir = "imgart/descarga.jpg";
         $sql = mysqli_query($db, "insert into productos(idcat,descripcion,precio,img,resena)values('$_POST[categoria]','$_POST[descripcion]','$_POST[precio]','$dir','$_POST[resena]')");
-        echo "Insertado imagen por defecto";
+        echo "<div class='alert alert-success' role='alert'>Insertado imagen por defecto</div>";
 
     }else{
     if (($_FILES["imagen"]["type"] == "image/pjpeg")
@@ -17,7 +17,8 @@ if ($_POST['tipo'] == "INSERCION") {
             // echo "images/".$_FILES['imagen']['name'];
             $dir = "imgart/" . $_FILES['imagen']['name'];
             $sql = mysqli_query($db, "insert into productos(idcat,descripcion,precio,img,resena)values('$_POST[categoria]','$_POST[descripcion]','$_POST[precio]','$dir','$_POST[resena]')");
-            echo "Insertado con imagen por seleccion";
+            // echo "Insertado con imagen por seleccion";
+            echo "<div class='alert alert-secondary' role='alert'>Insertado con imagen por seleccion</div>";
         } else {
             echo 0;
         }
@@ -51,11 +52,11 @@ if ($_POST['tipo'] == "ACTUALIZACION") {
     }
 }
 
-if ($_GET['tipo'] == "ELIMNAR") {
+// if ($_GET['tipo'] == "ELIMNAR") {
 
-    $dato = mysqli_query($db, "delete from productos where id=$_GET[id]");
-    if ($dato) {
-        echo 1;
-    }
-}
+//     $dato = mysqli_query($db, "delete from productos where id=$_GET[id]");
+//     if ($dato) {
+//         echo 1;
+//     }
+// }
 
