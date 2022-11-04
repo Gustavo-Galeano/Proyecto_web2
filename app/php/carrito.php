@@ -1,19 +1,7 @@
 <?php
 require_once 'conexion.php';
 
-
-
-// $dato = mysqli_query($db, 
-// "insert into carrito (idcliente,idproducto,cantidad,precio,fecha,estado)
-// values('$_GET[usu]','$_GET[codart]','$_GET[cant]','$_GET[precio]',now(),'Pendiente')");
-// if ($dato) {
-//     echo 1;
-// } else {
-//     echo 0;
-// }
-
 if ($_GET['tipo'] == "INSERCION") {
-
     $dato = mysqli_query($db, "insert into carrito (idcliente,idproducto,cantidad,precio,fecha,estado)
      values('$_GET[usu]','$_GET[codart]','$_GET[cant]','$_GET[precio]',now(),'Pendiente')");
     if ($dato) {
@@ -28,11 +16,8 @@ if ($_GET['tipo'] == "INSERCION") {
         // echo $Json = json_encode($var);
     }
 }
-
-
 if ($_GET['tipo'] == "ELIMNAR") {
-
-    $sql = mysqli_query($db, "delete from carrito where id=$_GET[id]");
+    $sql = mysqli_query($db, "delete from carrito where idcarrito=$_GET[id]");
     if ($sql) {
         echo 1;
     }

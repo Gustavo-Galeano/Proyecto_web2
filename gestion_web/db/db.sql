@@ -90,4 +90,17 @@ values (
         '1234'
     );
 
-select * from usuarios;
+select * from carrito;
+
+select *
+from carrito c, productos p
+where
+    c.idproducto = p.id
+    and estado = 'Pendiente';
+
+delete from carrito where id = 128;
+
+select *
+from carrito c, productos p
+where
+    c.idproducto = p.id and estado = 'Pendiente';

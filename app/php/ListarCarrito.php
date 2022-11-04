@@ -1,7 +1,14 @@
 <?php
 require_once 'conexion.php';
 session_start();
-$sql = mysqli_query($db, "select * from carrito where estado='Pendiente' and idcliente=$_SESSION[id]");
+// $sql = mysqli_query($db, "select * from carrito c, productos p where c.idproducto=p.idcarrito and estado='Pendiente' and idcliente=$_SESSION[id]");
+
+
+$query = mysqli_query($db, "select * from carrito c, productos p where c.idproducto=p.id and estado='Pendiente' and idcliente=$_SESSION[id]");
+
+// $query = mysqli_query($db,"select p.descripcion as descripcion, c.precio as precio, c.cantidad as cant 
+//                            from carrito c inner join productos p on c.id = p.id; nd idcliente=$_SESSION[id]");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +20,7 @@ $sql = mysqli_query($db, "select * from carrito where estado='Pendiente' and idc
     <title>Carrito</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://lipis.github.io/bootstrap-sweetalert/dist/sweetalert.css">
-<script src="https://lipis.github.io/bootstrap-sweetalert/dist/sweetalert.js"></script>
+    <script src="https://lipis.github.io/bootstrap-sweetalert/dist/sweetalert.js"></script>
 </head>
 
 <body>
@@ -35,16 +42,15 @@ $sql = mysqli_query($db, "select * from carrito where estado='Pendiente' and idc
         <tbody>
             <?php
             $i = 1;
-            while ($row = mysqli_fetch_array($sql)) {
+            while ($row = mysqli_fetch_array($query)) {
             ?>
                 <tr class="table-info">
                     <th scope="row"><?php echo $i ?></th>
-                    <td><?php echo $row['idproducto'] ?></td>
+                    <td><?php echo $row['descripcion'] ?></td>
                     <td><?php echo $row['cantidad'] ?></td>
                     <td><?php echo $row['precio'] ?></td>
                     <td>
-                        <button type="button" class="btn btn-danger" 
-                        onclick="anular(<?php echo $row['id']; ?>)">
+                        <button type="button" class="btn btn-danger" onclick="anular(<?php echo $row['idcarrito']; ?>)">
                             Anular
                         </button>
                     </td>
@@ -60,13 +66,14 @@ $sql = mysqli_query($db, "select * from carrito where estado='Pendiente' and idc
     <button type="button" class="btn btn-danger">
         Canelar
     </button>
-    <button type="button" class="btn btn-success">
+    <button type="button" class="btn btn-success" onclick="confirmar(<?php echo $row['idcarrito']; ?>)">
         Confirmar
     </button>
 
 
     <script>
         function anular(a) {
+            alert(a)
             swal({
                     title: "Seguro?",
                     text: "El registro de anulara por completo!",
@@ -94,6 +101,10 @@ $sql = mysqli_query($db, "select * from carrito where estado='Pendiente' and idc
                         swal("Cancelado", "Accion cancelada", "error");
                     }
                 });
+        }
+
+        function confirmar(c) {
+            console.log(c);
         }
     </script>
 </body>

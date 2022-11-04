@@ -19,7 +19,7 @@ session_start();
 <body>
 
     <div class="container">
-        <input type="hidden" id="usuarioCliente" value="<?php echo $_SESSION['id'] ?>">
+        <input type="hidden" id="usuarioCliente" value="<?php echo $_SESSION['id']; ?>">
         <?php
         $dato = mysqli_query($db, "select * from productos");
         while ($row = mysqli_fetch_array($dato)) {
@@ -29,8 +29,10 @@ session_start();
                 <div class="card-body">
                     <h4 class="card-title"><?php echo $row['descripcion'] ?></h4>
                     <p class="card-text"><?php echo $row['resena'] ?></p>
-                    <p class="card-text text-center" style="font-size: 25px;"><?php echo number_format($row['precio'], 0, ',', '.') ?></p>
-               
+                    <p class="card-text text-center" style="font-size: 25px;">
+                        <?php echo number_format($row['precio'], 0, ',', '.') ?>
+                    </p>
+
                     <input type="hidden" id="codart<?php echo $row['id'] ?>" value="<?php echo $row['id'] ?>">
                     <input type="hidden" id="precioart<?php echo $row['id'] ?>" value="<?php echo $row['precio'] ?>">
                     <input type="number" value="1" id="cantidad<?php echo $row['id'] ?>" class="form-control text-center">
@@ -55,7 +57,6 @@ session_start();
 
     function cargarcarrito(a) {
         e = "INSERCION";
-        // e = $("#tipo" + a).val();
         c = $("#precioart" + a).val();
         b = $("#cantidad" + a).val();
         d = $("#usuarioCliente").val();
@@ -69,7 +70,6 @@ session_start();
         c es el precio 
         d es el codigo del cliente
         */
-        
         $.get("php/carrito.php", {
             tipo: e,
             codart: a,
@@ -85,31 +85,6 @@ session_start();
             }
         });
     }
-
-
-    // function cargarcarrito(a) {
-
-    //     c = $("#precioart" + a).val();
-    //     b = $("#cantidad" + a).val();
-    //     d = $("#usuarioCliente").val();
-    //     /*alert(a);
-    //     alert(c);
-    //     alert(b);*/
-    //     /* a es el codigo del art, b es la cantidad, c es el precio y d es el codigo del cliente*/
-    //     $.get("php/carrito.php", {
-    //         codart: a,
-    //         cant: b,
-    //         precio: c,
-    //         usu: d,
-
-    //     }, function(retorno) {
-    //         if (retorno == 1) {
-    //             alert('Agregado al carrito');
-    //         } else {
-    //             alert('Problemas');
-    //         }
-    //     })
-    // }
 </script>
 
 </html>
