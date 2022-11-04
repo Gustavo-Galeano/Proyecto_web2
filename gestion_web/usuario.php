@@ -72,8 +72,8 @@ require_once 'conexion.php';
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="tipo">
-                        <input type="text" class="form-control" id="pk">
+                        <input type="hidden" class="form-control" id="tipo">
+                        <input type="hidden" class="form-control" id="pk">
 
                         <label for="nombre">Nombre</label>
                         <input type="text" class="form-control" id="nombre_usuario" name="nombre" placeholder="Ingrese el Nombre">
