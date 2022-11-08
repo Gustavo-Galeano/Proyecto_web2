@@ -69,12 +69,12 @@ function eliminar(a) {
 
                 $.get("ajax/categorias.php", { tipo: "ELIMNAR", id: a }, function (valores) {
                     if (valores == 1) {
-                        swal("Borrado!", "El registro se ha borrado correctamente.", "success");
+                        swal("Borrado!", "El registro ha sido eliminado", "success");
                         setTimeout(location.href='categoria', 5000);
                     }
                 })
             } else {
-                swal("Cancelado", "La accion fue cancelada :)", "error");
+                swal("Cancelado", "Accion canselada", "error");
             }
         });
 }

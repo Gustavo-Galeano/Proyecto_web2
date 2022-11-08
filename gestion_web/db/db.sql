@@ -54,7 +54,7 @@ select * from datos;
 
 create table
     carrito(
-        id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        idcarrito INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
         idcliente INT,
         idproducto INT,
         cantidad INT,

@@ -24,7 +24,7 @@ if ($_GET['tipo'] == "ACTUALIZACION") {
         $var[] = 1;
         echo $Json = json_encode($var);
     } else {
-        $var[] = "<div class='alert alert-danger' role='alert'> Error al actuaclizar los datos </div>";
+        $var[] = "<div class='alert alert-danger' role='alert'> Fallo en la actualizacion </div>";
         $var[] = 0;
         echo $Json = json_encode($var);
     }
@@ -34,7 +34,7 @@ if ($_GET['tipo'] == "ACTUALIZACION") {
 
 if ($_GET['tipo'] == "ELIMNAR") {
 
-    $dato = mysqli_query($db, "delete from carrito where id=$_GET[id]");
+    $dato = mysqli_query($db, "delete from categorias where id=$_GET[id]");
     if ($dato) {
         echo 1;
     }

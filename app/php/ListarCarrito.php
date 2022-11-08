@@ -66,7 +66,11 @@ $query = mysqli_query($db, "select * from carrito c, productos p where c.idprodu
     <button type="button" class="btn btn-danger">
         Canelar
     </button>
-    <button type="button" class="btn btn-success" onclick="confirmar(<?php echo $row['idcarrito']; ?>)">
+    <!-- <button type="button" class="btn btn-success" onclick="confirmar(<?php echo $row['idcarrito']; ?>)">
+        Confirmar
+    </button> -->
+
+    <button type="button" onclick="confirmar()">
         Confirmar
     </button>
 
@@ -104,7 +108,7 @@ $query = mysqli_query($db, "select * from carrito c, productos p where c.idprodu
         }
 
         function confirmar(c) {
-            console.log(c);
+            
         }
     </script>
 </body>
