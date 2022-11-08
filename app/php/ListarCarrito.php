@@ -69,12 +69,7 @@ $query = mysqli_query($db, "select * from carrito c, productos p where c.idprodu
     <!-- <button type="button" class="btn btn-success" onclick="confirmar(<?php echo $row['idcarrito']; ?>)">
         Confirmar
     </button> -->
-
-    <button type="button" onclick="confirmar()">
-        Confirmar
-    </button>
-
-
+    <button type="button" class="btn btn-success" onclick="confirmar()">Confirmar</button>
     <script>
         function anular(a) {
             alert(a)
@@ -91,7 +86,6 @@ $query = mysqli_query($db, "select * from carrito c, productos p where c.idprodu
                 },
                 function(isConfirm) {
                     if (isConfirm) {
-
                         $.get("php/carrito.php", {
                             tipo: "ELIMNAR",
                             id: a
@@ -108,7 +102,53 @@ $query = mysqli_query($db, "select * from carrito c, productos p where c.idprodu
         }
 
         function confirmar(c) {
-            
+            alert("hola")
+            swal({
+                    title: "Confirmar pedido",
+                    text: "El pedido sera confirmado",
+                    type: "success",
+                    showCancelButton: true,
+                    confirmButtonClass: "btn-success",
+                    confirmButtonText: "Si, confirmar pedido",
+                    cancelButtonText: "No, Cancelar!",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                },
+                function(isConfirm) {
+                    if (isConfirm) {
+                        $.get("php/carrito.php", {
+                            tipo: "CONFIRMAR",
+                            id: c
+                        }, function(valores) {
+                            if (valores == 1) {
+                                swal("Confirmado!", "Productos confirmados.", "success");
+                                setTimeout(location.href = '?', 3000);
+                            }
+                        })
+                    } else {
+                        swal("Cancelado", "Accion cancelada", "error");
+                    }
+                });
+            // swal({
+            //     title: "Confirmar Pedido",
+            //     text: "Los articulos selecionados seran conformados",
+            //     type: "info",
+            //     showCancelButton: true,
+            //     closeOnConfirm: false,
+            //     showLoaderOnConfirm: true
+            // }, function() {
+            //     $.get("php/carrito", {
+            //         tipo: "CONFIRMAR",
+            //         id: c
+            //     }, function(data) {
+            //         if (data == 1) {
+            //             swal("Confirmacion exitosa");
+            //             setTimeout(location.href = '?', 2000);
+            //         } else {
+            //             swal("Error", "Ocurrio un error inesperado", "error");
+            //         }
+            //     }, );
+            // });
         }
     </script>
 </body>

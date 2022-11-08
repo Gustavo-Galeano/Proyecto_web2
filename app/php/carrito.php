@@ -12,10 +12,26 @@ if ($_GET['tipo'] == "INSERCION") {
     } else {
         $var[] = "<div class='alert alert-danger' role='alert'> Problemas en insertar los datos </div>";
         $var[] = 0;
-        echo 0;
+        echo 0; 
         // echo $Json = json_encode($var);
     }
 }
+
+if ($_GET['tipo'] == "CONFIRMAR") {
+    $dato = mysqli_query($db, " update carrito set estado = 'Confirmado'");
+    if ($dato) {
+        $var[] = "<div class='alert alert-success' role='alert'> Datos actualizados </div>";
+        $var[] = 1;
+        echo 1;
+        // echo $Json = json_encode($var);
+    } else {
+        $var[] = "<div class='alert alert-danger' role='alert'> Problemas al actualizar los datos </div>";
+        $var[] = 0;
+        echo 0; 
+        // echo $Json = json_encode($var);
+    }
+}
+
 if ($_GET['tipo'] == "ELIMNAR") {
     $sql = mysqli_query($db, "delete from carrito where idcarrito=$_GET[id]");
     if ($sql) {
