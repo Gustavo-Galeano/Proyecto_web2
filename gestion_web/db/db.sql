@@ -104,3 +104,7 @@ select *
 from carrito c, productos p
 where
     c.idproducto = p.id and estado = 'Pendiente';
+
+update carrito set estado = 'Confirmado' where idcarrito = 166;
+
+update carrito set estado = 'Cancelado' where idcarrito = 167;

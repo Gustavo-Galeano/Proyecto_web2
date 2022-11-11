@@ -65,26 +65,21 @@
 
         $("#mostrar").load("php/articulo.php");
         $("#salir").click(function () {
-            /* $("#mostrar").load("https://carritoappweb.000webhostapp.com");*/
             $.get("php/logout.php", {}, function (retorno) {
                 if (retorno == 0) {
                     location.href = 'index.html'
                 }
             })
         });
-
         $("#carrito").click(function () {
             $("#mostrar").load("php/listarCarrito.php");
         });
-
         $("#historial").click(function () {
-            $("#mostrar").load("historial.html");
+            $("#mostrar").load("php/historial.php");
         });
-
         $("#articulo").click(function () {
             $("#mostrar").load("php/articulo.php");
         });
-
     })
 </script>
 <script>
