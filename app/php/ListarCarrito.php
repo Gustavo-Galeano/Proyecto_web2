@@ -54,8 +54,8 @@ $query = mysqli_query($db, "select * from carrito c, productos p where c.idprodu
 
   <hr>
 
-  <button type="submit" class="btn btn-danger" onclick="cancelar(<?php echo $row['idcarrito']; ?>)"> Cancelar</button>
-  <button type="submit" class="btn btn-success" onclick="confirmar(<?php echo $row['idcarrito']; ?>)"> Confirmar</button>
+  <button type="submit" class="btn btn-danger" onclick="cancelar()"> Cancelar</button>
+  <button type="submit" class="btn btn-success" onclick="confirmar()"> Confirmar</button>
 
 
   <script>
