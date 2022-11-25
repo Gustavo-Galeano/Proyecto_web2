@@ -34,7 +34,7 @@
                         <!-- Nested Row within Card Body -->
                         <div class="row">
                             <!-- <div class="col-lg-6 d-none d-lg-block bg-login-image"></div> -->
-                            <div class="col-lg-6 d-none d-lg-block" >
+                            <div class="col-lg-6 d-none d-lg-block">
                                 <img src="img/todopclogo.png" alt="" style="width: 100%;">
                             </div>
                             <div class="col-lg-6">
@@ -103,25 +103,26 @@
                 return false;
             }
             $.get("ajax/validar.php", {
-                a: usuario,
-                b: passwd
-            }, function(pepito) {
-                $("#mensaje").html(pepito);
-                const myArray = JSON.parse(pepito);
-                if (myArray[1] != 1) {
-                    $("#mensaje").html(myArray[0]);
-                    $("#mensaje").fadeOut(5000, function() {
-                        $("#mensaje").html("");
-                    });
-                } else {
-                    $("#mensaje").html(myArray[0]);
-                    $("#mensaje").fadeOut(5000, function() {
-                        $("#mensaje").html("");
-                        location.href = 'dashboard';
-                    });
-                    $("#mensaje").fadeIn();
-                }
-            })
+                    a: usuario,
+                    b: passwd
+                },
+                function(pepito) {
+                    $("#mensaje").html(pepito);
+                    const myArray = JSON.parse(pepito);
+                    if (myArray[1] != 1) {
+                        $("#mensaje").html(myArray[0]);
+                        $("#mensaje").fadeOut(5000, function() {
+                            $("#mensaje").html("");
+                        });
+                    } else {
+                        $("#mensaje").html(myArray[0]);
+                        $("#mensaje").fadeOut(5000, function() {
+                            $("#mensaje").html("");
+                            location.href = 'dashboard';
+                        });
+                        $("#mensaje").fadeIn();
+                    }
+                })
         })
     });
 </script>

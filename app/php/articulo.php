@@ -62,15 +62,15 @@ session_start();
         d = $("#usuarioCliente").val();
         /*alert(a);
         alert(c);
-        alert(b);*/
-        /*
+        alert(b);
+
         e es el tipo de consulta
         a es el codigo del art, 
         b es la cantidad, 
         c es el precio 
         d es el codigo del cliente
         */
-        $.get("php/carrito.php", {
+        $.get("https://proyectofinalwebphp.000webhostapp.com/carrito_app/php/carrito.php", {
             tipo: e,
             codart: a,
             cant: b,

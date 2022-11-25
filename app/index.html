@@ -123,7 +123,7 @@
                 $("#mensaje2").fadeIn();
                 return false;
             }
-            $.get("php/validar.php", {
+            $.get("https://proyectofinalwebphp.000webhostapp.com/carrito_app/php/validar.php", {
                 caja1: caja1, caja2: caja2
             }, function (data) {
                 $("#mensaje").html(data);
