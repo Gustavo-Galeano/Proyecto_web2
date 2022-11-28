@@ -97,7 +97,7 @@ if ($_SESSION['nombre'] == "") {
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Pedidos:</h6>
                         <a class="collapse-item" href="listaFacturaConfirmado">Listar confirmados</a>
-                        <a class="collapse-item" href="listaFacturado">Listar Facturados</a>
+                        <!-- <a class="collapse-item" href="listaFacturado">Listar Facturados</a> -->
                     </div>
                 </div>
             </li>
@@ -119,13 +119,7 @@ if ($_SESSION['nombre'] == "") {
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Listados:</h6>
-                        <a class="collapse-item" href="reportpedido">Pedidos</a>
-                        <!--a class="collapse-item" href="register.html">Register</!--a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a-- class="collapse-item" href="blank.html">Blank Page</a-->
+                        <a class="collapse-item" href="listaFacturado">Listar Facturado
                     </div>
                 </div>
             </li>

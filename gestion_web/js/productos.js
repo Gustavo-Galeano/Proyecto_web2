@@ -19,7 +19,7 @@ $(document).ready(function () {
             }
         );
 
-
+        location.href = "producto";
     });
 })
 
@@ -85,7 +85,7 @@ function eliminar(a) {
                 $.get("ajax/productos.php", { tipo: "ELIMNAR", id: a }, function (valores) {
                     if (valores == 1) {
                         swal("Borrado!", "El registro se ha borrado correctamente.", "success");
-                        setTimeout(location.href='producto', 5000);
+                        setTimeout(location.href = 'producto', 5000);
                     }
                 })
             } else {

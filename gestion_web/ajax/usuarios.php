@@ -18,9 +18,10 @@ if ($_GET['tipo'] == "INSERTAR") {
     }
 }
 
-if ($_GET['tipo'] == "ACTUALIZACION") {
+if ($_POST['tipo'] == "ACTUALIZACION") {
 
-    $dato = mysqli_query($db, "update usuarios set nombre='$_GET[nombre]' apellido='$_GET[apellido]' usuario='$_GET[usuario]' password='$_GET[password]'  where id=$_GET[id]");
+    $dato = mysqli_query($db, "update usuarios set nombre='$_POST[nombre_usuario]' apellido='$_POST[apellido_usuario]' usuario='$_POST[usuario_usuario]' 
+    password='$_POST[password_usuario]'  where id=$_POST[pk]");
 
     if ($dato) {
         $var[] = "<div class='alert alert-success' role='alert'> Actualizacion exitosa exitosa </div>";

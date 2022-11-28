@@ -127,10 +127,10 @@
                 caja1: caja1, caja2: caja2
             }, function (data) {
                 $("#mensaje").html(data);
-                // const myArray = JSON.parse(data);
+                const myArray = JSON.parse(data);
                 $("#registrar").hide();
-                if (params != 1) {
-                    $("#mensaje").html(data);
+                if (myArray[1] != 1) {
+                    $("#mensaje").html(myArray[0]);
                     $("#mensaje").fadeOut(5000, function () {
                         $("#mensaje").html("");
                     });
@@ -144,23 +144,6 @@
                     });
                     $("#mensaje").fadeIn();
                 }
-
-                /*
-                    if (myArray[1] != 1) {
-                    $("#mensaje").html(myArray[0]);
-                    $("#mensaje").fadeOut(5000, function () {
-                        $("#mensaje").html("");
-                    });
-                    $("#mensaje").fadeIn();
-                } else {
-                    $("#mensaje").html(myArray[0]);
-                    $("#mensaje").fadeOut(5000, function () {
-                        
-                        $("#mensaje").html("");
-                        location.href = 'menu.html';
-                    });
-                    $("#mensaje").fadeIn();
-                }*/
             })
         });
         $("#boton_r").click(function () {

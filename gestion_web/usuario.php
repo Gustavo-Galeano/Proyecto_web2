@@ -35,8 +35,7 @@ require_once 'conexion.php';
                 <td> <?php echo $row['usuario']; ?> </td>
                 <td> <?php echo md5($row['password']); ?> </td>
                 <td>
-                    <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#modalUsuario" 
-                    onclick="relleno(
+                    <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#modalUsuario" onclick="relleno(
                         '<?php echo $row['id']; ?>',
                         '<?php echo $row['nombre']; ?>',
                         '<?php echo $row['apellido']; ?>',
@@ -45,7 +44,7 @@ require_once 'conexion.php';
                         Editar
                     </button>
 
-                    <button type="submit" class="btn btn-danger" onclick="eliminar(<?php echo $row['id']; ?>)">
+                    <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#modalEditUsuario">
                         Eliminar
                     </button>
                 </td>
@@ -61,6 +60,49 @@ require_once 'conexion.php';
 
 <!-- Modal -->
 <div class="modal fade" id="modalUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="tipo">
+                        <input type="text" class="form-control" id="pk">
+
+                        <label for="nombre">Nombre</label>
+                        <input type="text" class="form-control" id="nombre_usuario" name="nombre_usuario" placeholder="Ingrese el Nombre">
+                        <div id="mensajeNombre"></div>
+
+                        <label for="apellido">Apellido</label>
+                        <input type="text" class="form-control" id="apellido_usuario" name="apellido_usuario" placeholder="Ingrese el Apellido">
+                        <div id="mensajeApellido"></div>
+
+                        <label for="usuario">Usuario</label>
+                        <input type="text" class="form-control" id="usuario_usuario" name="usuario_usuario" placeholder="Ingrese el Usuario">
+                        <div id="mensajeUsuario"></div>
+
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password_usuario" name="password_usuario" placeholder="Ingrese el Password">
+                        <div id="mensajePassword"></div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="boton">Guardar</button>
+            </div>
+            <div id="mensaje"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal
+<div class="modal fade" id="modalEditUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -88,7 +130,7 @@ require_once 'conexion.php';
                         <div id="mensajeUsuario"></div>
 
                         <label for="password">Password</label>
-                        <input type="text" class="form-control" id="password_usuario" name="password" placeholder="Ingrese el Password">
+                        <input type="password" class="form-control" id="password_usuario" name="password" placeholder="Ingrese el Password">
                         <div id="mensajePassword"></div>
                     </div>
                 </form>
@@ -100,7 +142,7 @@ require_once 'conexion.php';
             <div id="mensaje"></div>
         </div>
     </div>
-</div>
+</div> -->
 
 <script src="js/usuarios.js"></script>
 

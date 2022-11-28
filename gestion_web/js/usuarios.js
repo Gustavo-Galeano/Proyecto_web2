@@ -17,7 +17,7 @@ $(document).ready(function () {
                 $("#mensajeNombre").html("");
             });
             $("#mensaje").fadeIn();
-            $("#nombre").focus();
+            $("#nombre_usuario").focus();
             return false;
         }
 
@@ -27,7 +27,7 @@ $(document).ready(function () {
                 $("#mensajeApellido").html("");
             });
             $("#mensaje").fadeIn();
-            $("#apellido").focus();
+            $("#apellido_usuario").focus();
             return false;
         }
         if (u == "") {
@@ -36,7 +36,7 @@ $(document).ready(function () {
                 $("#mensajeUsuario").html("");
             });
             $("#mensaje").fadeIn();
-            $("#usuario").focus();
+            $("#usuario_usuario").focus();
             return false;
         }
         if (p == "") {
@@ -45,14 +45,14 @@ $(document).ready(function () {
                 $("#mensajePassword").html("");
             });
             $("#mensaje").fadeIn();
-            $("#password").focus();
+            $("#password_usuario").focus();
             return false;
         }
         //envio de datos mediante ajax
         $.get("ajax/usuarios.php", {
-             tipo: t, id: c, nombre: n, apellido: a, usuario: u, password: p 
-            }, function (retorno) {
-            console.log(retorno);
+            tipo: t, id: c, nombre: n, apellido: a, usuario: u, password: p
+        }, function (retorno) {
+            alert(retorno);
             var x = JSON.parse(retorno);
             if (x[1] != 1) {
                 $("#mensaje").html(x[0]);
@@ -74,16 +74,21 @@ $(document).ready(function () {
 });
 
 
-function relleno(a, l, u, p, r) {
-    // alert(a)
-    $("#pk").val(a);
+function relleno(x,c,v,b,n) {
+    // console.log(x); //pk
+    // console.log(c); //name
+    // console.log(v); //lastname
+    // console.log(b); //user
+    // console.log(n); //password
+
+    $("#pk").val(x);
     $("#tipo").val("ACTUALIZACION");
-    // $("#descripcion").val(b);
     
-    $("#nombre_usuario").val(l); 
-    $("#apellido_usuario").val(r); 
-    $("#usuario_usuario").val(u); 
-    $("#password_usuario").val(p);
+    $("#nombre_usuario").val(c);
+    $("#apellido_usuario").val(v);
+    $("#usuario_usuario").val(b);
+    $("#password_usuario").val(n);
+
 
 }
 
